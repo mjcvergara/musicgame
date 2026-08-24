@@ -54,9 +54,6 @@ let playerTurn = false;
 // AUDIO
 // =================================
 
-// We don't create the AudioContext
-// until the player presses START.
-
 let audioContext = null;
 
 
@@ -89,8 +86,13 @@ const frequencies = {
 
 function startGame() {
 
-    // Create audio after
-    // the user taps START.
+    /*
+        Create the audio system only
+        after the player touches/clicks
+        START.
+
+        This is important for iPhone.
+    */
 
     if (!audioContext) {
 
@@ -100,11 +102,14 @@ function startGame() {
     }
 
 
-    // Resume audio if necessary.
+    /*
+        Resume audio if iPhone/browser
+        has suspended it.
+    */
 
     if (
-        audioContext.state
-        === "suspended"
+        audioContext.state ===
+        "suspended"
     ) {
 
         audioContext.resume();
@@ -112,7 +117,7 @@ function startGame() {
     }
 
 
-    // Reset game.
+    // Reset game
 
     sequence = [];
 
@@ -126,6 +131,8 @@ function startGame() {
 
     playerTurn = false;
 
+
+    // Update screen
 
     roundDisplay.textContent =
         round;
@@ -141,6 +148,8 @@ function startGame() {
     message.textContent =
         "Get ready...";
 
+
+    // Start first round
 
     nextRound();
 
@@ -160,11 +169,13 @@ function nextRound() {
     playerTurn = false;
 
 
+    // Update round
+
     roundDisplay.textContent =
         round;
 
 
-    // Pick random note.
+    // Pick random note
 
     const randomIndex =
         Math.floor(
@@ -177,14 +188,14 @@ function nextRound() {
         notes[randomIndex];
 
 
-    // Add note.
+    // Add note to sequence
 
     sequence.push(
         randomNote
     );
 
 
-    // Play sequence.
+    // Play sequence
 
     playSequence();
 
@@ -226,7 +237,10 @@ function playSequence() {
     );
 
 
-    // Player's turn.
+    /*
+        Allow player to answer
+        after the sequence finishes.
+    */
 
     setTimeout(
         function() {
@@ -249,6 +263,8 @@ function playSequence() {
 
 function playNote(note) {
 
+    // Make sure audio exists
+
     if (!audioContext) {
 
         return;
@@ -256,7 +272,7 @@ function playNote(note) {
     }
 
 
-    // Find piano key.
+    // Find matching piano key
 
     const button =
         document.querySelector(
@@ -264,50 +280,58 @@ function playNote(note) {
         );
 
 
-    // Light up key.
+    // Safety check
 
-    button.classList.add(
-        "active"
-    );
+    if (button) {
 
-
-    setTimeout(
-        function() {
-
-            button.classList.remove(
-                "active"
-            );
-
-        },
-        400
-    );
+        button.classList.add(
+            "active"
+        );
 
 
-    // Create oscillator.
+        setTimeout(
+            function() {
+
+                button.classList.remove(
+                    "active"
+                );
+
+            },
+            400
+        );
+
+    }
+
+
+    // Create oscillator
 
     const oscillator =
         audioContext.createOscillator();
 
 
-    // Volume control.
+    // Create volume control
 
     const gainNode =
         audioContext.createGain();
 
 
-    // Set note.
+    // Set frequency
 
     oscillator.frequency.value =
         frequencies[note];
 
 
-    // Piano-like waveform.
+    /*
+        Triangle sounds softer
+        and more like a simple
+        electronic piano.
+    */
 
     oscillator.type =
         "triangle";
 
 
-    // Connect audio.
+    // Connect audio
 
     oscillator.connect(
         gainNode
@@ -318,7 +342,7 @@ function playNote(note) {
     );
 
 
-    // Volume.
+    // Start volume
 
     gainNode.gain.setValueAtTime(
         0.3,
@@ -326,7 +350,7 @@ function playNote(note) {
     );
 
 
-    // Fade out.
+    // Fade out
 
     gainNode.gain.exponentialRampToValueAtTime(
         0.001,
@@ -334,12 +358,12 @@ function playNote(note) {
     );
 
 
-    // Start.
+    // Start sound
 
     oscillator.start();
 
 
-    // Stop.
+    // Stop sound
 
     oscillator.stop(
         audioContext.currentTime + 0.6
@@ -354,11 +378,14 @@ function playNote(note) {
 
 function handleNoteClick(event) {
 
-    // Ignore if game isn't ready.
+    /*
+        Don't allow piano keys
+        before the game starts.
+    */
 
     if (
-        !gameStarted
-        || !playerTurn
+        !gameStarted ||
+        !playerTurn
     ) {
 
         return;
@@ -366,11 +393,12 @@ function handleNoteClick(event) {
     }
 
 
-    // Make sure audio is active.
+    // Make sure audio is running
 
     if (
-        audioContext.state
-        === "suspended"
+        audioContext &&
+        audioContext.state ===
+        "suspended"
     ) {
 
         audioContext.resume();
@@ -378,27 +406,27 @@ function handleNoteClick(event) {
     }
 
 
-    // Get clicked note.
+    // Get note
 
     const clickedNote =
         event.currentTarget.dataset.note;
 
 
-    // Save player's note.
+    // Add to player's sequence
 
     playerSequence.push(
         clickedNote
     );
 
 
-    // Play note.
+    // Play note
 
     playNote(
         clickedNote
     );
 
 
-    // Check answer.
+    // Check answer
 
     checkAnswer();
 
@@ -415,7 +443,10 @@ function checkAnswer() {
         playerSequence.length - 1;
 
 
-    // Wrong note.
+    /*
+        Check if the latest note
+        is wrong.
+    */
 
     if (
         playerSequence[currentIndex]
@@ -429,12 +460,17 @@ function checkAnswer() {
     }
 
 
-    // Entire sequence completed.
+    /*
+        Check if the entire
+        sequence was completed.
+    */
 
     if (
-        playerSequence.length
-        === sequence.length
+        playerSequence.length ===
+        sequence.length
     ) {
+
+        // Add score
 
         score += 100;
 
@@ -450,7 +486,10 @@ function checkAnswer() {
         playerTurn = false;
 
 
-        // Next round.
+        /*
+            Wait one second before
+            starting the next round.
+        */
 
         setTimeout(
             function() {
@@ -478,8 +517,7 @@ function gameOver() {
 
 
     message.textContent =
-        "Game Over! Score: "
-        + score;
+        "Game Over! Score: " + score;
 
 
     startButton.textContent =
