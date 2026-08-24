@@ -3,57 +3,142 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <title>Music Memory Game</title>
+    <title>Galaxy Music Memory</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="game">
+    <!-- Galaxy stars -->
+    <div class="stars"></div>
+    <div class="stars stars-2"></div>
+    <div class="stars stars-3"></div>
 
-        <h1>🎵 Music Memory</h1>
 
-        <p>Listen to the sequence and repeat it!</p>
+    <main class="game">
 
-        <div class="game-info">
+        <div class="logo">
+            🎵
+        </div>
 
-            <div>
-                Round
-                <strong id="round">0</strong>
+        <h1>Galaxy Music</h1>
+
+        <p class="subtitle">
+            Listen. Remember. Play.
+        </p>
+
+
+        <!-- GAME INFORMATION -->
+
+        <section class="game-info">
+
+            <div class="info-box">
+
+                <span>ROUND</span>
+
+                <strong id="round">
+                    0
+                </strong>
+
             </div>
 
-            <div>
-                Score
-                <strong id="score">0</strong>
+
+            <div class="info-box">
+
+                <span>SCORE</span>
+
+                <strong id="score">
+                    0
+                </strong>
+
             </div>
+
+        </section>
+
+
+        <!-- MESSAGE -->
+
+        <div class="message-box">
+
+            <p id="message">
+                Tap START to begin
+            </p>
 
         </div>
 
 
-        <div class="piano">
+        <!-- PIANO -->
 
-            <button class="note" data-note="C">C</button>
-            <button class="note" data-note="D">D</button>
-            <button class="note" data-note="E">E</button>
-            <button class="note" data-note="F">F</button>
-            <button class="note" data-note="G">G</button>
-            <button class="note" data-note="A">A</button>
-            <button class="note" data-note="B">B</button>
+        <section class="piano">
 
-        </div>
+            <button
+                class="note"
+                data-note="C">
+                C
+            </button>
+
+            <button
+                class="note"
+                data-note="D">
+                D
+            </button>
+
+            <button
+                class="note"
+                data-note="E">
+                E
+            </button>
+
+            <button
+                class="note"
+                data-note="F">
+                F
+            </button>
+
+            <button
+                class="note"
+                data-note="G">
+                G
+            </button>
+
+            <button
+                class="note"
+                data-note="A">
+                A
+            </button>
+
+            <button
+                class="note"
+                data-note="B">
+                B
+            </button>
+
+        </section>
 
 
-        <p id="message">Press START to play!</p>
+        <!-- START BUTTON -->
 
+        <button
+            id="startButton">
 
-        <button id="startButton">
-            START
+            START GAME
+
         </button>
 
-    </div>
+
+        <p class="instructions">
+
+            🎧 Listen to the sequence<br>
+            🎹 Repeat the notes<br>
+            ✨ Reach the highest score
+
+        </p>
+
+    </main>
 
 
     <script src="script.js"></script>
