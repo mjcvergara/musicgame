@@ -1,5 +1,5 @@
 /* =================================
-   BASIC RESET
+   RESET
 ================================= */
 
 * {
@@ -7,17 +7,31 @@
 }
 
 
-html,
-body {
-    margin: 0;
-
+html {
     width: 100%;
     min-height: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+
+    margin: 0;
+    padding: 0;
 
     font-family:
         Arial,
         Helvetica,
         sans-serif;
+
+    color: white;
+
+    overflow-x: hidden;
 }
 
 
@@ -27,43 +41,37 @@ body {
 
 body {
 
-    min-height: 100vh;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    overflow-x: hidden;
-
-    color: white;
-
     background:
 
         radial-gradient(
-            circle at 20% 20%,
-            rgba(255, 80, 190, 0.35),
+            circle at 15% 20%,
+            rgba(255, 70, 190, 0.35),
             transparent 25%
         ),
 
         radial-gradient(
-            circle at 80% 30%,
+            circle at 85% 25%,
             rgba(160, 70, 255, 0.30),
             transparent 30%
         ),
 
         radial-gradient(
-            circle at 50% 80%,
+            circle at 50% 85%,
             rgba(255, 30, 150, 0.25),
             transparent 30%
         ),
 
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(100, 30, 180, 0.18),
+            transparent 45%
+        ),
+
         linear-gradient(
             135deg,
-            #090014,
-            #190025,
-            #080012
+            #08000f,
+            #180021,
+            #090012
         );
 
     position: relative;
@@ -72,7 +80,7 @@ body {
 
 
 /* =================================
-   STAR BACKGROUND
+   STARS
 ================================= */
 
 .stars,
@@ -81,7 +89,11 @@ body {
 
     position: fixed;
 
-    inset: 0;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
 
     pointer-events: none;
 
@@ -97,9 +109,11 @@ body {
             transparent 1px
         );
 
-    background-size: 70px 70px;
+    background-size:
+        70px 70px;
 
-    opacity: 0.35;
+    opacity:
+        0.35;
 
     animation:
         moveStars 20s linear infinite;
@@ -116,9 +130,11 @@ body {
             transparent 1px
         );
 
-    background-size: 110px 110px;
+    background-size:
+        110px 110px;
 
-    opacity: 0.3;
+    opacity:
+        0.30;
 
     animation:
         moveStars 35s linear infinite;
@@ -135,9 +151,11 @@ body {
             transparent 1px
         );
 
-    background-size: 160px 160px;
+    background-size:
+        160px 160px;
 
-    opacity: 0.25;
+    opacity:
+        0.25;
 
     animation:
         moveStars 50s linear infinite;
@@ -161,38 +179,58 @@ body {
 
 
 /* =================================
-   GAME CONTAINER
+   MAIN GAME
 ================================= */
 
 .game {
 
     position: relative;
 
-    z-index: 2;
+    z-index: 5;
 
-    width: min(900px, 94%);
+    width:
+        min(900px, 94%);
 
-    padding: 40px;
+    min-height:
+        700px;
 
-    text-align: center;
+    margin:
+        30px auto;
 
-    border-radius: 30px;
+    padding:
+        40px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+    border-radius:
+        30px;
 
     background:
-
-        rgba(35, 10, 55, 0.72);
+        rgba(30, 8, 50, 0.75);
 
     border:
-
         1px solid
         rgba(255, 130, 220, 0.25);
 
     box-shadow:
 
-        0 0 40px
+        0 0 50px
         rgba(255, 60, 190, 0.20),
 
-        inset 0 0 40px
+        inset 0 0 50px
         rgba(180, 70, 255, 0.08);
 
     backdrop-filter:
@@ -202,12 +240,16 @@ body {
 
 
 /* =================================
-   TITLE
+   LOGO
 ================================= */
 
 .logo {
 
-    font-size: 45px;
+    font-size:
+        50px;
+
+    margin-bottom:
+        5px;
 
     animation:
         floating 3s ease-in-out infinite;
@@ -219,24 +261,36 @@ body {
 
     0%,
     100% {
+
         transform:
             translateY(0);
+
     }
 
     50% {
+
         transform:
             translateY(-8px);
+
     }
 
 }
 
 
+/* =================================
+   TITLE
+================================= */
+
 h1 {
 
-    margin: 5px 0;
+    margin:
+        0;
 
     font-size:
-        clamp(36px, 7vw, 60px);
+        clamp(38px, 7vw, 65px);
+
+    line-height:
+        1.1;
 
     letter-spacing:
         2px;
@@ -253,10 +307,14 @@ h1 {
     -webkit-background-clip:
         text;
 
+    background-clip:
+        text;
+
     color:
         transparent;
 
     text-shadow:
+
         0 0 30px
         rgba(255, 80, 200, 0.3);
 
@@ -265,7 +323,8 @@ h1 {
 
 .subtitle {
 
-    margin-top: 0;
+    margin:
+        10px 0 25px;
 
     color:
         #d8b4fe;
@@ -277,29 +336,39 @@ h1 {
 
 
 /* =================================
-   GAME INFO
+   SCORE / ROUND
 ================================= */
 
 .game-info {
 
-    display: flex;
+    width:
+        100%;
 
-    justify-content: center;
+    display:
+        flex;
 
-    gap: 30px;
+    justify-content:
+        center;
 
-    margin: 30px 0;
+    gap:
+        25px;
+
+    margin:
+        15px 0 20px;
 
 }
 
 
 .info-box {
 
-    width: 140px;
+    width:
+        150px;
 
-    padding: 15px;
+    padding:
+        15px;
 
-    border-radius: 15px;
+    border-radius:
+        15px;
 
     background:
         rgba(255, 255, 255, 0.07);
@@ -308,14 +377,20 @@ h1 {
         1px solid
         rgba(255, 150, 230, 0.15);
 
+    box-shadow:
+        0 0 20px
+        rgba(255, 80, 200, 0.05);
+
 }
 
 
 .info-box span {
 
-    display: block;
+    display:
+        block;
 
-    font-size: 12px;
+    font-size:
+        11px;
 
     letter-spacing:
         2px;
@@ -328,11 +403,14 @@ h1 {
 
 .info-box strong {
 
-    display: block;
+    display:
+        block;
 
-    margin-top: 5px;
+    margin-top:
+        5px;
 
-    font-size: 30px;
+    font-size:
+        30px;
 
     color:
         #ff9de2;
@@ -346,16 +424,22 @@ h1 {
 
 .message-box {
 
-    min-height: 45px;
+    min-height:
+        45px;
 
-    margin-bottom: 15px;
+    margin:
+        5px 0 10px;
 
 }
 
 
 #message {
 
-    font-size: 20px;
+    margin:
+        0;
+
+    font-size:
+        20px;
 
     color:
         #f5d0fe;
@@ -369,18 +453,23 @@ h1 {
 
 .piano {
 
-    display: flex;
+    width:
+        100%;
 
-    justify-content: center;
+    max-width:
+        760px;
 
-    align-items: flex-start;
+    display:
+        grid;
 
-    gap: 6px;
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap:
+        6px;
 
     margin:
-        20px auto 30px;
-
-    max-width: 760px;
+        15px 0 30px;
 
 }
 
@@ -391,13 +480,17 @@ h1 {
 
 .note {
 
-    flex: 1;
+    width:
+        100%;
 
-    height: 220px;
+    height:
+        230px;
 
-    min-width: 60px;
+    min-width:
+        0;
 
-    border: none;
+    border:
+        none;
 
     border-radius:
         0 0 15px 15px;
@@ -413,11 +506,14 @@ h1 {
     color:
         #351047;
 
-    font-size: 22px;
+    font-size:
+        22px;
 
-    font-weight: bold;
+    font-weight:
+        bold;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     box-shadow:
 
@@ -428,11 +524,27 @@ h1 {
         rgba(0, 0, 0, 0.3);
 
     transition:
-        transform 0.12s,
-        box-shadow 0.12s,
-        background 0.12s;
 
-    touch-action: manipulation;
+        transform
+        0.12s ease,
+
+        box-shadow
+        0.12s ease,
+
+        background
+        0.12s ease;
+
+    touch-action:
+        manipulation;
+
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
+
+    -webkit-touch-callout:
+        none;
 
     -webkit-tap-highlight-color:
         transparent;
@@ -440,7 +552,9 @@ h1 {
 }
 
 
-/* Mouse */
+/* =================================
+   KEY HOVER
+================================= */
 
 .note:hover {
 
@@ -453,7 +567,9 @@ h1 {
 }
 
 
-/* Click / Touch */
+/* =================================
+   KEY PRESS
+================================= */
 
 .note:active {
 
@@ -468,7 +584,9 @@ h1 {
 }
 
 
-/* Computer playing note */
+/* =================================
+   KEY PLAYING
+================================= */
 
 .note.active {
 
@@ -483,7 +601,8 @@ h1 {
             #d96dff
         );
 
-    color: white;
+    color:
+        white;
 
     box-shadow:
 
@@ -502,10 +621,20 @@ h1 {
 
 #startButton {
 
-    padding:
-        16px 40px;
+    width:
+        auto;
 
-    border: none;
+    min-width:
+        220px;
+
+    min-height:
+        55px;
+
+    padding:
+        15px 40px;
+
+    border:
+        none;
 
     border-radius:
         50px;
@@ -518,7 +647,8 @@ h1 {
             #a855f7
         );
 
-    color: white;
+    color:
+        white;
 
     font-size:
         18px;
@@ -529,7 +659,8 @@ h1 {
     letter-spacing:
         1px;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     box-shadow:
 
@@ -537,8 +668,12 @@ h1 {
         rgba(255, 80, 190, 0.45);
 
     transition:
-        transform 0.2s,
-        box-shadow 0.2s;
+
+        transform
+        0.2s ease,
+
+        box-shadow
+        0.2s ease;
 
     touch-action:
         manipulation;
@@ -574,10 +709,7 @@ h1 {
 .instructions {
 
     margin-top:
-        30px;
-
-    line-height:
-        1.8;
+        25px;
 
     color:
         #c4b5fd;
@@ -585,22 +717,36 @@ h1 {
     font-size:
         14px;
 
+    line-height:
+        1.4;
+
+}
+
+
+.instructions p {
+
+    margin:
+        4px;
+
 }
 
 
 /* =================================
-   MOBILE / IPHONE
+   TABLET
 ================================= */
 
 @media (max-width: 700px) {
 
     body {
 
-        align-items:
-            flex-start;
+        min-height:
+            100svh;
 
         padding:
-            15px 0;
+            12px;
+
+        align-items:
+            center;
 
     }
 
@@ -608,13 +754,22 @@ h1 {
     .game {
 
         width:
-            96%;
+            100%;
+
+        max-width:
+            600px;
+
+        min-height:
+            calc(100svh - 24px);
+
+        margin:
+            0;
 
         padding:
-            25px 15px;
+            25px 12px;
 
         border-radius:
-            25px;
+            22px;
 
     }
 
@@ -622,7 +777,7 @@ h1 {
     .logo {
 
         font-size:
-            35px;
+            36px;
 
     }
 
@@ -630,73 +785,206 @@ h1 {
     h1 {
 
         font-size:
-            38px;
+            clamp(
+                32px,
+                10vw,
+                44px
+            );
 
     }
 
 
     .subtitle {
 
+        margin:
+            8px 0 15px;
+
         font-size:
             15px;
 
     }
 
 
+    /* SCORE */
+
     .game-info {
 
         gap:
-            15px;
+            12px;
 
         margin:
-            20px 0;
+            15px 0;
 
     }
 
 
     .info-box {
 
-        width:
-            120px;
+        flex:
+            1;
+
+        max-width:
+            150px;
+
+        padding:
+            12px;
 
     }
 
 
-    .piano {
+    .info-box span {
 
-        gap:
-            3px;
+        font-size:
+            10px;
+
+    }
+
+
+    .info-box strong {
+
+        font-size:
+            25px;
+
+    }
+
+
+    /* MESSAGE */
+
+    .message-box {
+
+        min-height:
+            40px;
+
+        margin:
+            5px 0 10px;
+
+    }
+
+
+    #message {
+
+        font-size:
+            18px;
+
+    }
+
+
+    /* PIANO */
+
+    .piano {
 
         width:
             100%;
+
+        grid-template-columns:
+            repeat(7, 1fr);
+
+        gap:
+            4px;
+
+        margin:
+            10px 0 25px;
 
     }
 
 
     .note {
 
+        height:
+            clamp(
+                180px,
+                42vh,
+                280px
+            );
+
         min-width:
             0;
 
-        height:
-            180px;
+        border-radius:
+            0 0 10px 10px;
 
         font-size:
-            17px;
+            clamp(
+                15px,
+                4vw,
+                20px
+            );
 
         box-shadow:
-            0 6px 0 #b99ac7;
+
+            0 6px 0
+            #b99ac7,
+
+            0 10px 15px
+            rgba(0, 0, 0, 0.25);
 
     }
 
+
+    .note:hover {
+
+        transform:
+            none;
+
+        background:
+
+            linear-gradient(
+                180deg,
+                #ffffff,
+                #eadcf3
+            );
+
+    }
+
+
+    .note:active,
+    .note.active {
+
+        transform:
+            translateY(6px);
+
+        box-shadow:
+
+            0 2px 0
+            #a23cc0,
+
+            0 0 25px
+            rgba(255, 90, 210, 0.8);
+
+    }
+
+
+    /* START */
 
     #startButton {
 
         width:
             90%;
 
+        max-width:
+            350px;
+
+        min-height:
+            54px;
+
         padding:
-            16px;
+            15px;
+
+        font-size:
+            17px;
+
+    }
+
+
+    /* INSTRUCTIONS */
+
+    .instructions {
+
+        margin-top:
+            18px;
+
+        font-size:
+            13px;
 
     }
 
@@ -704,15 +992,34 @@ h1 {
 
 
 /* =================================
-   SMALL IPHONES
+   SMALL IPHONE
 ================================= */
 
-@media (max-width: 400px) {
+@media (max-width: 390px) {
+
+    body {
+
+        padding:
+            8px;
+
+    }
+
 
     .game {
 
+        min-height:
+            calc(100svh - 16px);
+
         padding:
-            20px 10px;
+            18px 8px;
+
+    }
+
+
+    .logo {
+
+        font-size:
+            30px;
 
     }
 
@@ -725,21 +1032,191 @@ h1 {
     }
 
 
-    .note {
-
-        height:
-            150px;
+    .subtitle {
 
         font-size:
-            15px;
+            14px;
+
+    }
+
+
+    .game-info {
+
+        margin:
+            10px 0;
 
     }
 
 
     .info-box {
 
-        width:
-            105px;
+        padding:
+            9px;
+
+    }
+
+
+    .info-box strong {
+
+        font-size:
+            22px;
+
+    }
+
+
+    #message {
+
+        font-size:
+            16px;
+
+    }
+
+
+    .piano {
+
+        gap:
+            3px;
+
+        margin:
+            8px 0 20px;
+
+    }
+
+
+    .note {
+
+        height:
+            190px;
+
+        font-size:
+            15px;
+
+        border-radius:
+            0 0 8px 8px;
+
+    }
+
+
+    .instructions {
+
+        display:
+            none;
+
+    }
+
+}
+
+
+/* =================================
+   LANDSCAPE PHONE
+================================= */
+
+@media (
+    max-width: 900px
+) and (
+    orientation: landscape
+) {
+
+    body {
+
+        align-items:
+            flex-start;
+
+        padding:
+            10px;
+
+    }
+
+
+    .game {
+
+        min-height:
+            auto;
+
+        padding:
+            15px;
+
+    }
+
+
+    .logo {
+
+        display:
+            none;
+
+    }
+
+
+    h1 {
+
+        font-size:
+            28px;
+
+    }
+
+
+    .subtitle {
+
+        margin:
+            4px;
+
+    }
+
+
+    .game-info {
+
+        margin:
+            8px 0;
+
+    }
+
+
+    .piano {
+
+        margin:
+            8px 0 15px;
+
+    }
+
+
+    .note {
+
+        height:
+            150px;
+
+    }
+
+
+    .instructions {
+
+        display:
+            none;
+
+    }
+
+}
+
+
+/* =================================
+   REDUCED MOTION
+================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
 
     }
 
