@@ -2,43 +2,78 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta
+        name="theme-color"
+        content="#100018"
+    >
 
     <title>Galaxy Music Memory</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- Galaxy stars -->
+    <!-- =================================
+         GALAXY BACKGROUND
+    ================================== -->
+
     <div class="stars"></div>
+
     <div class="stars stars-2"></div>
+
     <div class="stars stars-3"></div>
 
 
+    <!-- =================================
+         GAME
+    ================================== -->
+
     <main class="game">
+
+        <!-- Logo -->
 
         <div class="logo">
             🎵
         </div>
 
-        <h1>Galaxy Music</h1>
+
+        <!-- Title -->
+
+        <h1>
+            Galaxy Music
+        </h1>
+
 
         <p class="subtitle">
             Listen. Remember. Play.
         </p>
 
 
-        <!-- GAME INFORMATION -->
+        <!-- =================================
+             SCORE / ROUND
+        ================================== -->
 
         <section class="game-info">
 
             <div class="info-box">
 
-                <span>ROUND</span>
+                <span>
+                    ROUND
+                </span>
 
                 <strong id="round">
                     0
@@ -49,7 +84,9 @@
 
             <div class="info-box">
 
-                <span>SCORE</span>
+                <span>
+                    SCORE
+                </span>
 
                 <strong id="score">
                     0
@@ -60,7 +97,9 @@
         </section>
 
 
-        <!-- MESSAGE -->
+        <!-- =================================
+             MESSAGE
+        ================================== -->
 
         <div class="message-box">
 
@@ -71,72 +110,111 @@
         </div>
 
 
-        <!-- PIANO -->
+        <!-- =================================
+             PIANO
+        ================================== -->
 
-        <section class="piano">
+        <section
+            class="piano"
+            aria-label="Piano keys"
+        >
 
             <button
                 class="note"
-                data-note="C">
+                data-note="C"
+                type="button"
+            >
                 C
             </button>
 
+
             <button
                 class="note"
-                data-note="D">
+                data-note="D"
+                type="button"
+            >
                 D
             </button>
 
+
             <button
                 class="note"
-                data-note="E">
+                data-note="E"
+                type="button"
+            >
                 E
             </button>
 
+
             <button
                 class="note"
-                data-note="F">
+                data-note="F"
+                type="button"
+            >
                 F
             </button>
 
+
             <button
                 class="note"
-                data-note="G">
+                data-note="G"
+                type="button"
+            >
                 G
             </button>
 
-            <button
-                class="note"
-                data-note="A">
-                A
-            </button>
 
             <button
                 class="note"
-                data-note="B">
+                data-note="A"
+                type="button"
+            >
+                A
+            </button>
+
+
+            <button
+                class="note"
+                data-note="B"
+                type="button"
+            >
                 B
             </button>
 
         </section>
 
 
-        <!-- START BUTTON -->
+        <!-- =================================
+             START BUTTON
+        ================================== -->
 
         <button
-            id="startButton">
-
+            id="startButton"
+            type="button"
+        >
             START GAME
-
         </button>
 
 
-        <p class="instructions">
+        <!-- =================================
+             INSTRUCTIONS
+        ================================== -->
 
-            🎧 Listen to the sequence<br>
-            🎹 Repeat the notes<br>
-            ✨ Reach the highest score
+        <div class="instructions">
 
-        </p>
+            <p>
+                🎧 Listen to the sequence
+            </p>
+
+            <p>
+                🎹 Repeat the notes
+            </p>
+
+            <p>
+                ✨ Reach the highest score
+            </p>
+
+        </div>
 
     </main>
 
