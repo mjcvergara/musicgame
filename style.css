@@ -1,0 +1,193 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background: #171329;
+
+    color: white;
+}
+
+
+.game {
+    width: 650px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    background: #252044;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+
+h1 {
+    margin: 0 0 10px;
+
+    font-size: 40px;
+}
+
+
+.game-info {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 80px;
+
+    margin: 30px 0;
+
+    font-size: 18px;
+}
+
+
+.game-info strong {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 28px;
+
+    color: #c4b5fd;
+}
+
+
+.piano {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    margin-top: 30px;
+}
+
+
+.note {
+    width: 70px;
+
+    height: 200px;
+
+    border: none;
+
+    border-radius: 0 0 12px 12px;
+
+    background: white;
+
+    color: #222;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s,
+        background 0.15s,
+        box-shadow 0.15s;
+}
+
+
+.note:hover {
+    transform: translateY(5px);
+}
+
+
+.note:active {
+    transform: translateY(10px);
+}
+
+
+.note.active {
+    transform: translateY(10px);
+
+    background: #a78bfa;
+
+    color: white;
+
+    box-shadow:
+        0 0 25px #a78bfa;
+}
+
+
+#message {
+    min-height: 25px;
+
+    margin: 30px 0;
+
+    font-size: 20px;
+}
+
+
+#startButton {
+    padding: 14px 35px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #8b5cf6;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+#startButton:hover {
+    background: #a78bfa;
+
+    transform: scale(1.05);
+}
+
+
+@media (max-width: 700px) {
+
+    .game {
+        width: 95%;
+
+        padding: 25px;
+    }
+
+
+    .piano {
+        gap: 3px;
+    }
+
+
+    .note {
+        width: 13vw;
+
+        height: 150px;
+
+        font-size: 16px;
+    }
+
+
+    .game-info {
+        gap: 40px;
+    }
+
+}
