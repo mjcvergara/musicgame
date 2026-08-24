@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Music Memory Game</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="game">
+
+        <h1>🎵 Music Memory</h1>
+
+        <p>Listen to the sequence and repeat it!</p>
+
+        <div class="game-info">
+
+            <div>
+                Round
+                <strong id="round">0</strong>
+            </div>
+
+            <div>
+                Score
+                <strong id="score">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="piano">
+
+            <button class="note" data-note="C">C</button>
+            <button class="note" data-note="D">D</button>
+            <button class="note" data-note="E">E</button>
+            <button class="note" data-note="F">F</button>
+            <button class="note" data-note="G">G</button>
+            <button class="note" data-note="A">A</button>
+            <button class="note" data-note="B">B</button>
+
+        </div>
+
+
+        <p id="message">Press START to play!</p>
+
+
+        <button id="startButton">
+            START
+        </button>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
